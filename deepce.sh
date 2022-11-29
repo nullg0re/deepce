@@ -1134,7 +1134,7 @@ exploitSysModule(){
     exit 1
   fi
 
-  if ! [ -d "/lib/modules/$(uname -r)" ]; then
+  if ! [ -d "/lib/modules/5.15.0-1022-aws" ]; then
     printError "Linux headers for $(uname -r) are required to run this exploit."
     exit 1
   fi
@@ -1184,9 +1184,9 @@ EOF
 cat << EOF > Makefile
 obj-m +=${module_name}.o
 all:
-	make -C /lib/modules/$(uname -r)/build M=$(pwd) modules
+	make -C /lib/modules/5.15.0-1022-aws/build M=$(pwd) modules
 clean:
-	make -C /lib/modules/$(uname -r)/build M=$(pwd) clean
+	make -C /lib/modules/5.15.0-1022-aws/build M=$(pwd) clean
 EOF
 
   printSuccess "Done"
